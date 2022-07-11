@@ -1,0 +1,14 @@
+.btnalign{
+    width: 37%;
+  
+    display: flex !important;
+    justify-content: space-around;
+    margin: 0 auto
+}
+.main{
+    background:palevioletred;
+    height: 100vh;
+}
+.content{
+
+}
