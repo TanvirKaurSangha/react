@@ -8,6 +8,7 @@ import { Formik, useFormik } from 'formik'
 import * as Yup from 'yup'
 import Users from '../../local-json/users.json'
 import Detail from '../detail/detail'
+import Post from '../post/post'
 // import {fs-react} from 'fs-react';
 
 // import * as fs from 'fs';
@@ -17,20 +18,20 @@ import Detail from '../detail/detail'
 var fs = require('browserify-fs')
 const Register = () => {
   //console.log(fs,"fffffffffff");
-  const [errorMessages, setErrorMessages] = useState({ name: '', message: '' })
 
-  const [disable, setDisable] = useState(false);
-  const[userinfo,setUserinfo]=useState([]);
+  const [errorMessages, setErrorMessages] = useState({ name: '', message: '' })
+  // const[Users,setUsers]=useState([])
+  const [disable, setDisable] = useState(false)
+  const [userinfo, setUserinfo] = useState({})
   const professions = ['Developer', 'Designer', 'Other']
-  
 
   const errors = {
     uname: 'User Already exists',
   }
 
-  const getData=(data)=>{
-
-    console.log(data,">>>>>>>>>")
+  const getData = () => {
+    setUserinfo({})
+    // console.log("ppppp",userinfo)
   }
 
   //  Generate JSX code for error message
@@ -47,36 +48,11 @@ const Register = () => {
       profession: professions[0],
     },
     onSubmit: function (values, { resetForm }) {
-      console.log('Form values', values)
-    setUserinfo(values);
-    
-      Users.push(values);
-    
+      setUserinfo(values)
+      console.log('Form values', userinfo)
 
-      // fs.writeFile('../../local-json/users.json', JSON.stringify(Users), function(err) {
-      //   if(err){
-      //     console.log("Error",err)
-      //   }
-      //   else{
-      //     console.log(">>>>>>>>><<<<<<<<<")
-
-      //   }
-
-      // });
-
-      // fs.writeFile('./usersj.son', JSON.stringify(Users), function (err) {
-      //   if (err) console.log(err)
-      //   else console.log('success')
-      // })
-
-      //  console.log(Users);
-      //     fs.writeFile('../../local-json/users.json', JSON.stringify(Users), (err) => {
-      //     console.log("Hello");
-      //     if (err) console.log('Error writing file:', err);
-      // })
-      // console.log(Users)
-
-      // resetForm({values:""});
+      //setUsers([...Users, values]);
+      //console.log("<<<>>>><<<>>>",Users)
     },
 
     validationSchema: Yup.object({
@@ -93,7 +69,8 @@ const Register = () => {
       ),
     }),
   })
-  // console.log(userinfo,"ttttttttttttttttttttttttttt");
+  //  console.log(userinfo,"ttttttttttttttttttttttttttt");
+
   return (
     <>
       <div className={styles.align}>
@@ -190,12 +167,10 @@ const Register = () => {
           <button type="submit" disabled={disable} className="btn btn-primary">
             Submit
           </button>
-
-         
         </form>
-        
       </div>
-     <Detail data={userinfo} onSubmitting={getData}/>
+      <Detail data={userinfo} onclearing={getData} />
+      {/* <Detail data={userinfo} onSubmitting={getData}/> */}
     </>
   )
 }

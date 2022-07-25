@@ -1,6 +1,4 @@
 .align{
-
-
     position: absolute;
     left: 50%;
     top: 50%;
@@ -9,7 +7,6 @@
     padding: 10px;
 
 }
-
 .redText{
     color:red
 }

@@ -3,20 +3,25 @@ import styles from "./detail.module.css"
 //import {useLocation} from 'react-router-dom';
 
 const Detail=(props)=>{
+  const clearData=()=>{
+console.log("clear data called ");
+    props.onclearing({})
+
+  }
  // console.log(props.data.email,"jhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
    // const location = useLocation();
-   const[name,setName]=useState("");
-   const handleChange=(e)=>{
-    setName(e.target.value)
-   }
+  //  const[name,setName]=useState("");
+  //  const handleChange=(e)=>{
+  //   setName(e.target.value)
+  //  }
   
 
-   const handleSubmit=(e)=>{
-    e.preventDefault();
-    props.onSubmitting(name);
+  //  const handleSubmit=(e)=>{
+  //   e.preventDefault();
+  //   props.onSubmitting(name);
 
 
-   }
+  //  }
  return(<>
 <div className='container'>x
 <div className='text-center mt-5'>
@@ -40,7 +45,8 @@ const Detail=(props)=>{
     </tr>
   </tbody>
   </table>
-  <div>
+  
+  {/* <div>
     <h4> User Form Here</h4>
     <div>
             <form onSubmit = {handleSubmit}>
@@ -51,8 +57,8 @@ const Detail=(props)=>{
         </div>
     
     
-    </div>
-
+    </div> */}
+   <button onClick={clearData} className="btn btn-primary">Clear</button>
  </div>
 </div>
 
